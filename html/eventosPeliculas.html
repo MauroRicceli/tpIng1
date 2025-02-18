@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Portal </title>
+        <meta name="Autores" content="Mauro Andrés Ricceli, Jazmin Ludmila Quinteros y Valentina Gomez">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Descripción" content="DEMO pagina web para TP Ingenieria de Software 2023 turno mañana"
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a0fbb2be6c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="..\css\barraNavGeneralStyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+        <link rel="stylesheet" href="..\css\mapaStyle.css"/>
+        <link rel="stylesheet" href="..\css\eventosStyle.css">
+        
+    </head>
+
+    <body style="margin: 0; background-color: #ffe6f4;">
+
+        <header onmouseleave="mostrarLogoMail()">
+            <i class="fa-solid fa-envelope fa-lg logoMail" onmouseenter="mostrarExtensionContacto()" style="margin-top: 11px;"></i>
+            <p class="contactUs" style="margin-right: 1%;"> mauroricceli@gmail.com </p>
+            <p class="contactUs separadorContactUs"> | </p>
+            <p class="contactUs"> +54 11 3096-4654 </p>
+            <p class="headerDemo" onmouseenter="mostrarNeon()"> DEMO </p>
+            <p class="headerDemoNeon" onmouseleave="ocultarNeon()"> DEMO </p>
+        </header>
+        <nav>
+            <ul class="navPrincipal">
+                <div class="dropdownPadreLugares" >
+                <li class="items active"><a href="../html/lugares.html"><p> LUGARES</p></a></li>
+                    <div class="dropdownLugares">
+                        <ul class="navDropdown">
+                            <li class="dropdownItem dropdownItemPersonalExt"><p> REGISTRAR LUGAR </p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="dropdownPadreEventos">
+                <li class="items" style="margin-left: 5px;"><p> EVENTOS </p></li>
+                    <div class="dropdownEventos">
+                        <ul class="navDropdown">
+                            <li class="dropdownItem "><a href="../html/eventosObras.html"><p> OBRAS DE ARTISTAS LOCALES </p></a></li>
+                            <li class="dropdownItem "><a href="../html/eventosPeliculas.html"><p> PELICULAS CINE AMBULANTE </p></a></li>
+                            <li class="dropdownItem dropdownItemPersonalExt"><p> REGISTRAR EVENTO </p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdownPadreAvisos">
+                <li class="items" style="margin-left: 5px;"><p> AVISOS </p> </li>
+                    <div class="dropdownAvisos">
+                    <ul class="navDropdown">
+                        <li class="dropdownItem"><p>SERVICIOS</p></li>
+                        <li class="dropdownItem"><a href="../html/consultas.html"><p>ARTICULOS</p></a></li>
+                        <li class="dropdownItem dropdownItemComercianteExt"><a href="../html/ofrecerProducto.html"><p>PUBLICAR AVISO</p></a></li>
+                    </ul>
+                    </div>
+                </div>
+
+                <li class="items itemDerecha"><a href="../html/asistencias.html"><p> ASISTENCIA </p></a></li>
+
+                <div class="dropdownPadreMiembros">
+                <li class="items itemDerecha"><p> MIEMBROS </p> </li>
+                    <div class="dropdownMiembros">
+                    <ul class="navDropdown">
+                        <div class="dropdownPadreComerciantes">
+                        <li class="dropdownItem dropdownComerciante" onmouseenter="cambiarBordeDropdown()" onmouseleave="reestablecerBordeDropdown()"><p> COMERCIANTES </p></li>
+                            <div class="dropdownComerciantes" onmouseover="cambiarBordeDropdown()">
+                            <ul class="navDropdown">
+                                <li class="dropdownItem dropdownItemNoOculto"><p> SOLICITAR CUENTA </p></li>
+                                <li class="dropdownItem dropdownItemNoOculto" onclick="sesionComercianteIniciada()"><p> INICIAR SESION </p></li>
+                                <li class="dropdownItem dropdownItemOculto" onclick="sesionComercianteCerrada()"><p> CERRAR SESION </p></li>
+                                <li class="dropdownItem dropdownItemOculto"><p> GESTIONAR CUENTA </p></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="dropdownPadrePersonal">
+                        <li class="dropdownItem dropdownItemPersonal" onmouseenter="cambiarBordeDropdown()" onmouseleave="reestablecerBordeDropdown()"><p> PERSONAL </p></li>
+                            <div class="dropdownPersonal" onmouseover="cambiarBordeDropdown()">
+                            <ul class="navDropdown">
+                                <li class="dropdownItem dropdownItemNoOculto" onclick="sesionPersonalIniciada()"><p> INICIAR SESION </p></li>
+                                <li class="dropdownItem dropdownItemOculto" onclick="sesionPersonalCerrada()"><p> CERRAR SESION </p></li>
+                            </ul>
+                            </div>
+                        </div>
+                    </ul>
+                    </div>
+                </div>
+
+            </ul>
+        </nav>
+      
+        <br>
+
+        <div id="map"></div>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" ></script>
+        
+        <div  class="seccion">
+            <div class="panelInformacion">
+               
+                        <div class="panel front">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMWE2OTdiY2MtM2ViNy00NmExLWIxZjYtYTVkNGJkNzgwYjVmXkEyXkFqcGdeQXVyNjgzMjQ0MTA@._V1_.jpg" alt="Portada del evento">
+                          <h3>Waves</h3>
+                        </div>
+                        <div class="panel back">
+                            <h2>Waves</h2>
+                            <p>Una familia afroamericana de clase media, dirigida por un padre bienintencionado pero excesivamente dominante, navega por el amor, el perdón y la reconciliación tras una pérdida.</p>
+                            <br>
+                            <i class="fa-regular fa-calendar" style="color: #ffffff;"></i>
+                            <p>vie, 15 dic, 20:30.
+                                Ciudad Cultural Konex
+                                Sarmiento 3131, Buenos Aires </p>
+                                  
+                            <div class="link">
+                                <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarEventos(0)"></i>
+                            </div>
+                        </div>
+            </div>
+            <div class="panelInformacion">
+               
+                <div class="panel front">
+                    <img src="https://pics.filmaffinity.com/La_ballena_The_Whale-480000884-large.jpg" alt="Portada del evento">
+                  <h3>La ballena</h3>
+                </div>
+                <div class="panel back">
+                    <h2>La ballena</h2>
+                    <p>Un profesor de inglés, un tipo solitario que sufre obesidad mórbida, intenta restablecer el contacto con su hija en busca de perdón.</p>
+                    <br>
+                    <i class="fa-regular fa-calendar" style="color: #ffffff;"></i>
+                    <p>sáb, 16 dic, 20:00 a el dom, 17 dic, 20:00. 
+                        Ciudad Cultural Konex
+                        Sarmiento 3131, Buenos Aires </p>
+                         
+                    <div class="link">
+                        <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarEventos(1)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panelInformacion">
+               
+                <div class="panel front">
+                    <img src="https://revistavelvet.cl/wp-content/uploads/2022/05/IMG_4218.jpg" alt="Portada del evento">
+                  <h3>Todo en todas partes al mismo tiempo</h3>
+                </div>
+                <div class="panel back">
+                    <h2>Todo en todas partes al mismo tiempo</h2>
+                    <p>Una heroína inesperada debe usar sus nuevos poderes para luchar contra los desconcertantes peligros del multiverso y así lograr salvar su mundo.</p>
+                    <br>
+                    <i class="fa-regular fa-calendar" style="color: #ffffff;"></i>
+                    <p>22 DE NOVIEMBRE – 20:30 HS. 
+                        Ciudad Cultural Konex
+                        Sarmiento 3131, Buenos Aires</p>
+                      
+                    <div class="link">
+                        <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarEventos(2)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="panelInformacion">
+               
+                <div class="panel front">
+                    <img src="https://media.gq.com.mx/photos/62e00d455a8c1e60ded0d820/3:2/w_3000,h_2000,c_limit/PEARL.jpg" alt="Portada del evento">
+                  <h3>Pearl</h3>
+                </div>
+                <div class="panel back">
+                      <h2>Pearl</h2>
+                      <p>En la remota granja de su familia, Pearl debe cuidar a su padre enfermo bajo la estricta supervisión de su religiosa madre. Ella sueña con una vida lejos de allí, similar a la de las estrellas de cine, pero vive en un ambiente opresor y aterrador.</p>
+                      <br>
+                      <i class="fa-regular fa-calendar" style="color: #ffffff;"></i>
+                      <p>sáb., 18 de nov. de 2023 16:00 - 18:00.
+                        Ciudad Cultural Konex
+                        Sarmiento 3131, Buenos Aires </p>
+                       
+                    <div class="link">
+                        <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarEventos(3)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="panelInformacion">
+               
+                <div class="panel front">
+                    <img src="https://pics.filmaffinity.com/living_stars-128465601-mmed.jpg" alt="Portada del evento">
+                  <h3>Living Stars</h3>
+                </div>
+                <div class="panel back">
+                      <h2>Living Stars</h2>
+                      <p>En Buenos Aires, están bailando. Decenas de personas reales, identificados simplemente por su nombre y ocupación, se presentan en sus cocinas, salones, oficinas y calles, cada quien baila una canción pop bastante conocida. Jóvenes y viejos, solos y acompañados, llevan a cabo para la cámara, con una crudeza por lo general sólo reservado para el espejo del baño. Esto es Living Stars. </p>
+                      <br>
+                      <i class="fa-regular fa-calendar" style="color: #ffffff;"></i>
+                      <p>lun, 4 dic, 21:00 a el mié, 6 dic, 21:00. 
+                        Ciudad Cultural Konex
+                        Sarmiento 3131, Buenos Aires </p>
+                    <div class="link">
+                        <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarEventos(4)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="panelInformacion">
+               
+                <div class="panel front">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzBIyMoY5SyxGj1tbx33YJcyqvP896PxHewx8DINPhF2K5jBrw" alt="Portada del evento">
+                  <h3>Dear Future Children</h3>
+                </div>
+                <div class="panel back">
+                    <h2>Dear Future Children</h2>
+                    <p>El documental que explora cómo tres mujeres jóvenes de Hong Kong, Chile y Uganda afrontan el asombroso impacto personal de su activismo político. 
+                        Una película sobre la próxima generación, hecha por la próxima generación.</p>
+                    <br>
+                    <p>14 de octubre , 19:00.
+                        Ciudad Cultural Konex
+                        Sarmiento 3131, Buenos Aires</p>
+                    
+                    <div class="link">
+                        <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarEventos(5)"></i>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+
+        <footer class="footerEventos">
+            <ul>
+                <li class="itemFooter"><p> 103 - Emergencias </p></li>
+                <li class="itemFooter"><p> 107 - SAME </p></li>
+                <li class="itemFooter"><p> 911 - Policía </p></li>
+                <li class="itemFooter"><p> 147 - Atención ciudadana </p></li>
+            </ul>
+        </footer>
+
+        <script src="..\js\barraNavGeneralScript.js"></script>
+        <script src="..\js\mapaScript.js"></script> 
+    
+
+    </body>
+
+</html>

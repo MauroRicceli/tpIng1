@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Portal </title>
+        <meta name="Autores" content="Mauro Andrés Ricceli, Jazmin Ludmila Quinteros y Valentina Gomez">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Descripción" content="DEMO pagina web para TP Ingenieria de Software 2023 turno mañana">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a0fbb2be6c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="..\css\mainPageStyle.css">
+    </head>
+
+    <body style="margin: 0; background-color: #ffe6f4">
+        <header onmouseleave="mostrarLogoMail()">
+            <i class="fa-solid fa-envelope fa-lg logoMail" onmouseenter="mostrarExtensionContacto()" style="margin-top: 11px;"></i>
+            <p class="contactUs" style="margin-right: 1%;"> mauroricceli@gmail.com </p>
+            <p class="contactUs separadorContactUs"> | </p>
+            <p class="contactUs"> +54 11 3096-4654 </p>
+            <p class="headerDemo" onmouseenter="mostrarNeon()"> DEMO </p>
+            <p class="headerDemoNeon" onmouseleave="ocultarNeon()"> DEMO </p>
+        </header>
+
+        <div class="barraNavegacionConImagen">
+            <nav>
+                <ul onmouseleave="mostrarItems()">
+                    <li class="dropdownLugares items" onmouseenter="mostrarExtensionLugares()"><h3>NUESTRA CULTURA</h3></li>   
+                    <li class="dropdownLugaresExt dropdownItem"><a href="../html/lugares.html"><h3>LUGARES</h3></a></li>
+                    <li class="dropdownLugaresExt dropdownItem"><a href="../html/eventosObras.html"><h3>EVENTOS</h3></a></li>      
+                    <li class="items"><a href="../html/consultas.html"><h3>AVISOS</h3></a></li>
+                    <li class="items"><a href="../html/asistencias.html"><h3>ASISTENCIA</h3></a></li>
+                    <li class="items itemsNavDerecha dropdownMiembros" onmouseenter="mostrarExtensionMiembros()"><h3>MIEMBROS</h3></li>
+                    <li class="dropdownMiembrosExt itemsNavDerecha dropdownItem"><a><h3>SOLICITAR CUENTA</h3></a></li>
+                    <li class="dropdownMiembrosExt itemsNavDerecha dropdownItem"><a><h3>INICIAR SESION</h3></a></li>
+
+                </ul>
+            </nav>
+
+            <div class="textoBienvenida">
+                <p> BIENVENIDOS AL PORTAL </p>
+            </div>
+
+        </div>
+
+        <hr>
+  
+        <div class="imagenesLugaresConFlechas">
+            <div class="imagenesLugaresMainPage imagenPrincipal">
+                <img src="https://i.imgur.com/ufXXwNb.jpg" alt="puenteDeLaMujer"> 
+                <p> El puente de la Mujer es un puente atirantado de pilón contrapeso diseñado por el arquitecto español Santiago Calatrava en la ciudad de Buenos Aires, Argentina. Es la primera de sus obras en América Latina (seguida por el Museu do Amanhã en Río de Janeiro) y se encuentra ubicada en el Dique 3 de Puerto Madero, en Pierina Dealessi y Manuela Gorriti.</p>
+            </div>
+
+            <div class="imagenesLugaresMainPage">
+                <img src="https://i.imgur.com/L4pyP82.jpg" alt="puenteDeLaMujer"> 
+                <p> El Planetario Galileo Galilei está ubicado en la intersección de Avenida General Sarmiento y Belisario Roldán, dentro del Parque Tres de Febrero, en el barrio de Palermo de la ciudad de Buenos Aires, Argentina. Su primera función fue el 13 de junio de 1967,​ y recibió diversas reformas y actualizaciones siendo las más importantes las de 2011 y 2017.​ Se construyó con la finalidad de promulgar la divulgación de la ciencia astronómica a través de espectáculos didácticos para los estudiantes y el público en general.​ En su explanada de acceso tiene en exhibición tres meteoritos metálicos, que fueron encontrados en territorio argentino.</p>
+            </div>
+
+            <i class="fa-solid fa-play fa-rotate-180 iconoLugaresAvanzar" onclick="avanzarImagen(-1)"> </i>
+            <i class="fa-solid fa-play iconoLugaresRetroceder" onclick="avanzarImagen(1)"> </i>
+        </div>
+
+        <br>
+
+        <footer>
+            <ul>
+                <li class="itemFooter"><p> 103 - Emergencias </p></li>
+                <li class="itemFooter"><p> 107 - SAME </p></li>
+                <li class="itemFooter"><p> 911 - Policía </p></li>
+                <li class="itemFooter"><p> 147 - Atención ciudadana </p></li>
+            </ul>
+        </footer>
+
+        <script src="..\js\mainPageScript.js"></script>
+    </body>
+</html>

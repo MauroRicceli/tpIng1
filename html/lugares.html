@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="Autores" content="Mauro Andrés Ricceli, Jazmin Ludmila Quinteros y Valentina Gomez">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Descripción" content="DEMO pagina web para TP Ingenieria de Software 2023 turno mañana">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a0fbb2be6c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="..\css\barraNavGeneralStyle.css">
+        <script src="..\js\barraNavGeneralScript.js"></script>
+        <link rel="stylesheet" href="..\css\lugaresStyle.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+
+    </head>
+
+    <body>
+        <header onmouseleave="mostrarLogoMail()">
+            <i class="fa-solid fa-envelope fa-lg logoMail" onmouseenter="mostrarExtensionContacto()" style="margin-top: 11px;"></i>
+            <p class="contactUs" style="margin-right: 1%;"> mauroricceli@gmail.com </p>
+            <p class="contactUs separadorContactUs"> | </p>
+            <p class="contactUs"> +54 11 3096-4654 </p>
+            <p class="headerDemo" onmouseenter="mostrarNeon()"> DEMO </p>
+            <p class="headerDemoNeon" onmouseleave="ocultarNeon()"> DEMO </p>
+        </header>
+        <nav>
+            <ul class="navPrincipal">
+                <div class="dropdownPadreLugares">
+                <li class="items active"><p> LUGARES </p></li>
+                    <div class="dropdownLugares">
+                        <ul class="navDropdown">
+                            <li class="dropdownItem dropdownItemPersonalExt"><p> REGISTRAR LUGAR </p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="dropdownPadreEventos">
+                <li class="items" style="margin-left: 5px;"><p> EVENTOS </p> </li>
+                    <div class="dropdownEventos">
+                        <ul class="navDropdown">
+                            <li class="dropdownItem "><a href="../html/eventosObras.html"><p> OBRAS DE ARTISTAS LOCALES </p></a></li>
+                            <li class="dropdownItem "><a href="../html/eventosPeliculas.html"><p> PELICULAS CINE AMBULANTE </p></a></li>
+                            <li class="dropdownItem dropdownItemPersonalExt"><p> REGISTRAR EVENTO </p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdownPadreAvisos">
+                <li class="items" style="margin-left: 5px;"><p> AVISOS </p> </li>
+                    <div class="dropdownAvisos">
+                    <ul class="navDropdown">
+                        <li class="dropdownItem"><p>SERVICIOS</p></li>
+                        <li class="dropdownItem"><a href="../html/consultas.html"><p>ARTICULOS</p></a></li>
+                        <li class="dropdownItem dropdownItemComercianteExt"><a href="../html/ofrecerProducto.html"><p>PUBLICAR AVISO</p></a></li>
+                    </ul>
+                    </div>
+                </div>
+
+                <li class="items itemDerecha" ><a href="../html/asistencias.html"><p> ASISTENCIA </p></a></li>
+
+                <div class="dropdownPadreMiembros">
+                <li class="items itemDerecha"><p> MIEMBROS </p> </li>
+                    <div class="dropdownMiembros">
+                    <ul class="navDropdown">
+                        <div class="dropdownPadreComerciantes">
+                        <li class="dropdownItem dropdownComerciante" onmouseenter="cambiarBordeDropdown()" onmouseleave="reestablecerBordeDropdown()"><p> COMERCIANTES </p></li>
+                            <div class="dropdownComerciantes" onmouseover="cambiarBordeDropdown()">
+                            <ul class="navDropdown">
+                                <li class="dropdownItem dropdownItemNoOculto"><p> SOLICITAR CUENTA </p></li>
+                                <li class="dropdownItem dropdownItemNoOculto" onclick="sesionComercianteIniciada()"><p> INICIAR SESION </p></li>
+                                <li class="dropdownItem dropdownItemOculto" onclick="sesionComercianteCerrada()"><p> CERRAR SESION </p></li>
+                                <li class="dropdownItem dropdownItemOculto"><p> GESTIONAR CUENTA </p></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="dropdownPadrePersonal">
+                        <li class="dropdownItem dropdownItemPersonal" onmouseenter="cambiarBordeDropdown()" onmouseleave="reestablecerBordeDropdown()"><p> PERSONAL </p></li>
+                            <div class="dropdownPersonal" onmouseover="cambiarBordeDropdown()">
+                            <ul class="navDropdown">
+                                <li class="dropdownItem dropdownItemNoOculto" onclick="sesionPersonalIniciada()"><p> INICIAR SESION </p></li>
+                                <li class="dropdownItem dropdownItemOculto" onclick="sesionPersonalCerrada()"><p> CERRAR SESION </p></li>
+                            </ul>
+                            </div>
+                        </div>
+                    </ul>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+
+        <!-- ACA EMPIEZA EL CODIGO DE LOS LUGARES-->
+
+        <ul id="combobox">
+            <li><ul id="barraLugares">
+                <li class="lugarItem"><p> Almagro </p></li>
+                <li class="lugarItem"><p> Belgrano </p></li>
+                <li class="lugarItem"><p> Boedo </p></li>
+                <li class="lugarItem"><p> Caballito </p></li>
+                <li class="lugarItem"><p> Coghlan </p></li>
+                <li class="lugarItem"><p> Colegiales </p></li>
+                <li class="lugarItem"><p> Floresta </p></li>
+                <li class="lugarItem"><p> La Boca </p></li>
+                <li class="lugarItem"><p> Núñez </p></li>
+                <li class="lugarItem"><p> Palermo </p></li>
+                <div class="dropdownPadrePuertoMadero">
+                <li class="lugarItem" onclick="mostrarPuertoMadero()"><p> Puerto Madero </p></li>
+                    <div class="dropdownPuertoMadero">
+                        <ul class="dropdownLugar">
+                            <li class="dropdownLugarItem" onclick="mostrarAtractivoPuertoMadero1()"><p> Puente de la Mujer </p></li>
+                            <li class="dropdownLugarItem" onclick="mostrarAtractivoPuertoMadero2()"><p> Fragata A.R.A Sarmiento </p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdownPadreRecoleta">
+                <li class="lugarItem" onclick="mostrarRecoleta()"><p> Recoleta </p></li>
+                    <div class="dropdownRecoleta">
+                        <ul class="dropdownLugar">
+                            <li class="dropdownLugarItem" onclick="mostrarAtractivoRecoleta1()"><p> Cementerio </p></li>
+                            <li class="dropdownLugarItem" onclick="mostrarAtractivoRecoleta2()"><p> Floralis Genérica </p></li>
+                            <li class="dropdownLugarItem" onclick="mostrarAtractivoRecoleta3()"><p> Ateneo Grand Splendid </p></li>
+                        </ul>
+                    </div>
+                </div>
+                <li class="lugarItem"><p> Saavedra </p></li>
+                <li class="lugarItem"><p> San Nicolás </p></li>
+                <li class="lugarItem"><p> Villa Pueyrredón </p></li>
+                <li class="lugarItem"><p> Villa Urquiza </p></li>
+            </ul></li>
+
+            <li><ul id="seccionLugares">
+                <li class="lugarItemSeccionStandby"><p> Seleccione un barrio </p></li>
+                <li>
+                    <ul class="seccionBarrio">
+                        <li class="itemPuertoMadero"><img class="lugarFoto" src="https://i.imgur.com/8nG75Ze.jpg" alt="fotoPuertoMadero"></img></li>
+                        <li class="lugarTitulo itemPuertoMadero"><p> Puerto Madero </p></li>
+                        <li class="itemPuertoMadero"><hr class="lugarHr"></li>
+                        <li class="lugarItemParrafo itemPuertoMadero"><p> Puerto Madero es un barrio porteño ubicado en la Comuna 1 de la Ciudad Autónoma de Buenos Aires. A su vez, es uno de los cuarenta y ocho barrios oficiales en los que se subdivide la capital argentina. Su ubicación cercana a la zona este de la ciudad, lo extenso de su área y su vista al río hacen que este distrito sea uno de los más valorados de Buenos Aires. <br>
+
+                            El barrio debe su nombre a Eduardo Madero, comerciante de Buenos Aires que presentó tres proyectos para la construcción del puerto de la ciudad, el último de los cuales fue aprobado por el entonces Presidente de la Nación Julio Argentino Roca en 1882. <br>
+                            
+                            Este distrito encabeza hace varias décadas el título de ser el "Barrio más caro de Latinoamérica", por tener el metro cuadrado (m2) con mayor precio de Latam. Además allí se emplazan sedes u oficinas de grandes empresas multinacionales, hoteles y residencias en altura de lujo, es hogar de figuras destacadas de este país, empresarios y funcionarios políticos. También por esto se emplaza en el la torre residencial de mayor altura de Argentina la famosa Alvear Tower con 239 metros de altura.</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="seccionBarrio">
+                        <li class="itemPuertoMadero1"><img class="lugarFoto" src="https://i.imgur.com/30VeCpH.jpg" alt="fotoPuenteDeLaMujer"></img></li>
+                        <li class="lugarTitulo itemPuertoMadero1"><p> Puente de la Mujer </p></li>
+                        <li class="itemPuertoMadero1"><hr class="lugarHr"></li>
+                        <li class="lugarItemParrafo itemPuertoMadero1"><p> Se trata de una obra pensada por el empresario Alberto González, quien fue miembro del Grupo Madero y donó el dinero para su construcción. González se la encargó al arquitecto e ingeniero español Santiago Calatrava. <br> Fue fabricado por la empresa Urssa en la ciudad de Vitoria, en el País Vasco, debido a que el acero con el que se lo construyó no se fabrica en Argentina.<br>
+
+                            El diseño es una síntesis de la imagen de una pareja bailando tango. <br>
+                            
+                         </p></li>
+                        <li class="lugarItemBoton itemPuertoMadero1"><button class="buttonLugares" onclick="mostrarDescripcionPuertoMadero1()"> Descripción completa </button></li>
+                            <div class="descripcionCompletaPuertoMadero1">
+                                <button class="botonDescripcion" onclick="cerrarDescripcionPuertoMadero1()">X</button>
+                                <h2> Puente de la Mujer </h2>
+                                <hr>
+                                <p>
+                                    El Puente de la Mujer, uno de los íconos del barrio de Puerto Madero, es la primera obra en América Latina del reconocido arquitecto español Santiago Calatrava y representa otra muestra de que la Ciudad se posiciona a la vanguardia del arte y de la arquitectura en toda la región. <br>
+
+                                    Es además un imponente proyecto de ingeniería: gracias a que dispone de uno de los mecanismos de giro más grandes del mundo, este puente peatonal giratorio se abre para dar paso a las embarcaciones a vela que navegan por los diques de Puerto Madero. <br>
+
+                                    A través del Puente de la Mujer, podés cruzar caminando el Dique 3 de Puerto Madero desde la Av. Alicia Moreau de Justo hasta Olga Cossettini. <br>
+
+                                    Pero hay más: tanto el acero como todos sus componentes fueron fabricados en la ciudad de Vitoria, al sur de Bilbao, País Vasco. y trasladados a Buenos Aires para ser luego ensamblados aquí. <br>
+
+                                    <h3>Primera renovación integral</h3>
+                                    En 2022, se llevó adelante una gran obra de remodelación. Las viejas y desgastadas maderas del piso se cambiaron por listones sustentables hechos con plástico reciclado. Cien mil Botellas de Amor se transformaron en cinco toneladas del material perfecto para un nuevo piso. Primero, se retiró la madera existente y se hizo una limpieza integral de la estructura a través del hidrolavado para eliminar todo posible elemento contaminante. Luego, se protegió la superficie con pintura anticorrosiva y se colocó el nuevo deck de madera sustentable. Para lograr esa superficie, se necesitó el equivalente a dos piletas olímpicas llenas de envases. <br>
+
+                                    El material sustentable es beneficioso porque es más duradero, resistente a la corrosión, a la humedad, al cambio climático y a las plagas. Además, no se astilla y requiere menor mantenimiento que la madera tradicional. <br>
+
+                                    Por otro lado, se hizo un refuerzo de la pintura en los casi 40 metros de alto que tiene el mástil.
+
+                                    <h3>Números y curiosidades</h3>
+                                    > Fue inaugurado oficialmente en diciembre de 2001. <br>
+                                    > Tiene un cuerpo cubierto en madera sustentable, de 160 metros de largo, y un obelisco inclinado de 39 metros de altura, sostenido por varios tensores, lo que le da la forma de una gran arpa. <br>
+                                    > Su tramo central móvil giratorio, se abre y permite el paso de las embarcaciones. <br>
+                                    > Las parejas acostumbran a dejar candados aferrados a su barandilla, como un gesto de inmortalizar su unión.  Como el peso y el óxido pueden dañar la estructura, cada tanto, se retiran una gran cantidad de kilos de metal <br>
+                                </p>
+                            </div>
+                        <li class="lugarItemBoton itemPuertoMadero1"><button class="buttonLugares" onclick="abrirMapa(), mirarAtractivoPuertoMadero1()"> Mostrar en mapa </button></li>
+                            <div class="mapaLugares">
+                                <button class="botonDescripcion" onclick="cerrarMapa()">X</button>
+                                <h2>Ubicación</h2>
+                                <hr>
+                                <div id="map"> </div>
+                                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" ></script>
+                            </div>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="seccionBarrio">
+                        <li class="itemPuertoMadero2"><img class="lugarFoto" src="https://i.imgur.com/IRReQLW.jpg" alt="fotoFragataARASarmiento"></img></li>
+                        <li class="lugarTitulo itemPuertoMadero2"><p> Fragata A.R.A Sarmiento </p></li>
+                        <li class="itemPuertoMadero2"><hr class="lugarHr"></li>
+                        <li class="lugarItemParrafo itemPuertoMadero2"><p> La fragata ARA Presidente Sarmiento se convirtió en 1897 en el primer buque escuela moderno que tuvo la Argentina construido específicamente con ese fin y es un testimonio de las jornadas en la formación naval de la juventud argentina. Construida en Inglaterra, realizó 39 viajes alrededor del mundo recorriendo en total 1 100 000 millas marinas, siempre en misión de paz. <br>
+                            Actualmente se encuentra amarrada en el Dique III de Puerto Madero, en la Ciudad de Buenos Aires, convertida en museo.</p></li>
+                        <li class="lugarItemBoton itemPuertoMadero2"><button class="buttonLugares" onclick="mostrarDescripcionPuertoMadero2()"> Descripción completa </button></li>
+                        <div class="descripcionCompletaPuertoMadero2">
+                            <button class="botonDescripcion" onclick="cerrarDescripcionPuertoMadero2()">X</button>
+                            <h2> Fragata A.R.A Sarmiento </h2>
+                            <hr>
+                            <p>
+                                En el período noviembre 1888 - junio 1889, la Corbeta "La Argentina" cumplió el cuarto viaje de aplicación de los cadetes de la Escuela Naval Militar. Comandaba esa nave el Capitán de Navío Martín Rivadavia, quien comprobó que "La Argentina" presentaba defectos que hacían necesario su reemplazo por otro buque que estuviera provisto de los más modernos elementos de la náutica y lo hiciera idóneo para cumplir adecuadamente la función de buque-escuela. <br>
+
+                                Fue así que, en 1893, el Capitán Rivadavia elevó al Jefe del Estado Mayor General de Marina, Contraalmirante D. Daniel de Solier, un proyecto para construir un buque-escuela para la Armada Argentina. <br>
+
+                                Construcción de la Fragata "Presidente Sarmiento" <br>
+                                Los fundamentos de Rivadavia lograron que las autoridades políticas los consideraran, concretándose el proyecto que derivó luego con la firma del respectivo contrato de construcción de la nave. 
+
+                                El 13 de septiembre de 1895, mediante decreto, el capitán de Navío Manuel Domecq García fue designado comandante-inspector del buque-escuela a construirse, para lo cual le fueron entregados los antecedentes y planos de la futura nave. <br>
+
+                                Domecq García efectuó un exhaustivo análisis de todo ello y produjo un extenso informe al Estado Mayor General de Marina, en el cual formulaba observaciones y solicitaba autorización para efectuar modificaciones al proyecto original, hecho que mereció la aprobación de la superioridad. Arribado a Gran Bretaña, el capitán Domecq García estableció contacto con los directores del Astillero Laird Brothers, en Birkenhead. Tras múltiples estudios, consultas y discusiones, se llegó a un acuerdo definitivo, que concluyó con la firma del contrato respectivo. <br>
+
+                                Las pruebas de mar tuvieron lugar el 19 de mayo de 1898 y cinco días después se probaba el armamento. El 30 de junio de 1898 se enarboló el pabellón nacional en la Fragata "Presidente Sarmiento".<br>
+
+                                A cargo del teniente Thorne, la "Sarmiento" zarpó de Liverpool el 14 de julio de 1898, con escalas en Vigo y en Génova. Navegando sólo a vela, arribó a la rada exterior del puerto de Buenos Aires el 10 de septiembre de ese año. 
+
+                                Prestó servicios como buque-escuela entre 1899 y 1939, realizando 37 viajes de instrucción, circunnavegando el mundo en varias oportunidades y siendo siempre embajadora de paz de la Nación Argentina, aún en tiempos de guerra internacionales. En sus escalas fue visitada por personalidades de la época, hoy figuras históricas como el Kaiser Guillermo II de Alemania o el Zar Nicolás II de Rusia y formó parte de las revistas navales de las coronaciones de Eduardo VII de Inglaterra y Alfonso XIII de España. Participó además de la apertura del Canal de Panamá y la inauguración de la estatua de San Martín en Boulogne-Sur-Mer y la del General Manuel Belgrano en Génova. <br>
+
+                                Intervino en las maniobras y en la Gran Revista Naval del Centenario de la Revolución de Mayo, donde embarcaron en ella la Infanta Isabel de Borbón y el Presidente de la República; y en las Revistas Navales de Mar del Plata de los años 1902 y 1939. <br>
+
+                                El día 18 de abril de 1938 la gloriosa nave zarpaba del puerto de Buenos Aires para cumplir el último de los viajes de aplicación (Nº 37), que finalizaría en noviembre de ese año.
+
+                                A partir del año 1939 dejó de realizar viajes internacionales pero permaneció formando parte de la División de Instrucción de la Escuela Naval Militar, donde sus cadetes realizaban embarcos quincenales para cortos viajes de instrucción por mar. A partir de la década del 50 sus viajes se limitaron a navegaciones por el Río de la Plata, Paraná y Uruguay. En el año 1956 participó como buque presidencial en la Revista Naval de Mar del Plata, tras lo cual realizó un viaje de confraternidad al Uruguay, fondeando en Montevideo. En esos años fue buque insignia de la Fuerza Naval de Instrucción. <br>
+
+                                Su último destino en actividad fue el de buque-escuela, para el adiestramiento del personal subalterno de la Escuela de Marinería y curso profesional de Cabos de Mar.  
+
+                                El año 1961 es el último como unidad naval, pues a fines de diciembre pasó a convertirse en Buque Museo de la Amada Argentina y se estudió su conservación y ubicación definitiva para su custodia. 
+
+                                El 18 de junio de 1962 el PEN dictó el Decreto Nº 5.589, que declaraba a la fragata ARA "Presidente Sarmiento" como Monumento Histórico Nacional. Fue inaugurada como Buque Museo el 22 de mayo de 1964. 
+                            </p>
+                        </div>
+                        <li class="lugarItemBoton itemPuertoMadero2"><button class="buttonLugares" onclick="abrirMapa(), mirarAtractivoPuertoMadero2()"> Mostrar en mapa </button></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <ul class="seccionBarrio">
+                        <li class="itemRecoleta"><img class="lugarFoto" src="https://i.imgur.com/MAW4RwJ.jpg" alt="fotoRecoleta"></img></li>
+                        <li class="lugarTitulo itemRecoleta"><p> Recoleta </p></li>
+                        <li class="itemRecoleta"><hr class="lugarHr"></li>
+                        <li class="lugarItemParrafo itemRecoleta"><p> Recoleta, oficialmente Barrio de La Recoleta, es un barrio residencial céntrico de la Ciudad Autónoma de Buenos Aires, Argentina, que integra la totalidad de la Comuna 2. <br>
+                            Es una zona de amplio interés histórico y arquitectónico, llamada la "París argentina", por su similitud arquitectónica con la capital francesa, foro principal de visita en especial por el histórico Cementerio de La Recoleta ubicado allí, y el Centro Cultural Recoleta, un importante foco turístico y cultural dentro de la ciudad. Es un barrio tradicional de sectores acomodados, cuyos inmuebles cotizan entre los más caros de la ciudad. <br>
+                            Las líneas D y H de subterráneos pasan por el barrio, así como la traza de las futuras líneas F y G.</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="seccionBarrio">
+                        <li class="itemRecoleta1"><img class="lugarFoto" src="https://i.imgur.com/hzOsGWd.jpg" alt="fotoRecoletaCementerio"></img></li>
+                        <li class="lugarTitulo itemRecoleta1"><p> Cementerio </p></li>
+                        <li class="itemRecoleta1"><hr class="lugarHr"></li>
+                        <li class="lugarItemParrafo itemRecoleta1"><p> El Cementerio de la Recoleta es un famoso cementerio de la ciudad de Buenos Aires, Argentina. Está ubicado en el barrio de Recoleta y contiene las tumbas de personas muy reconocidas. <br>
+                            Se inauguró el 17 de noviembre de 1822, durante la gobernación del brigadier general Martín Rodríguez, siendo ministro de Gobierno Bernardino Rivadavia. Se transformó así en el primer cementerio público de la ciudad. Fue diseñado por Próspero Catelin, reservándose el gobierno parcelas para personalidades ilustres en la formación del Estado nacional.​<br>
+                             En 1880, Torcuato de Alvear—el primer intendente de la ciudad de Buenos Aires—encomendó al arquitecto Juan Antonio Buschiazzo para la remodelación del cementerio. Se rodeó con un muro de ladrillos, se pavimentaron sus calles y se construyó una entrada de estilo neoclásico.​</p></li>
+                        <li class="lugarItemBoton itemRecoleta1"><button class="buttonLugares" onclick="mostrarDescripcionRecoleta1()"> Descripción completa </button></li>
+                            <div class="descripcionCompletaRecoleta1">
+                                 <button class="botonDescripcion" onclick="cerrarDescripcionRecoleta1()">X</button>
+                                 <h2> Cementerio de la Recoleta </h2>
+                                 <hr>
+                                 <p>
+                                    El Cementerio de la Recoleta fue construido en el año 1822 como el primer cementerio público de la Ciudad y su trazado es obra del ingeniero francés Próspero Catelin. <br>
+
+                                    Se encuentra ubicado en el barrio de la Recoleta, que debe su nombre a que allí se hallaba el convento de los monjes recoletos. A esta congregación pertenecía la Basílica Nuestra Señora del Pilar y fue en la antigua huerta de la Basílica donde se construyó el cementerio. <br>
+                                    
+                                    A lo largo de sus cinco hectáreas de superficie se destacan las imponentes bóvedas y mausoleos pertenecientes a muchos de los grandes protagonistas de la historia argentina: líderes políticos, ex presidentes de la Nación, escritores, Premios Nobel, deportistas y empresarios. Algunas de las tumbas más concurridas son las de Eva Perón (Evita), Luis Federico Leloir y Adolfo Bioy Casares, entre otros. <br>
+                                    
+                                    Decoradas con mármoles y esculturas, las construcciones que integran el conjunto patrimonial de la Recoleta, son obra de destacados arquitectos y artistas. Más de 90 bóvedas han sido declaradas Monumento Histórico Nacional. <br>
+                                    
+                                    <h3>Historia</h3>
+
+                                    Los frailes de la orden de los franciscanos recoletos descalzos llegaron a la zona en la que se ubica actualmente el Cementerio de la Recoleta, entonces en las afueras de Buenos Aires, a principios del siglo xviii. Construyeron en el lugar un convento y una iglesia, en 1732, que colocaron bajo la advocación de la Virgen del Pilar. Actualmente la Basílica de Nuestra Señora del Pilar es un Monumento Histórico Nacional. Los lugareños terminaron denominando a la iglesia de los recoletos en simplemente la Recoleta, nombre que se extendió a toda la zona.
+                                    <br>
+                                    Cuando la orden fue disuelta en 1822, el 17 de noviembre de ese año, la huerta del convento fue convertida en el primer cementerio público de la Ciudad de Buenos Aires. Los responsables de su creación fueron el entonces gobernador de la provincia de Buenos Aires Martín Rodríguez (sus restos descansan en el Cementerio) y su ministro de Gobierno, Bernardino Rivadavia.
+                                    <br>
+                                    Sus dos primeros moradores fueron el niño negro liberto Juan Benito y la joven María Dolores Maciel.
+                                    <br>
+                                    En 1863 perdió su condición de camposanto debido a un conflicto con los masones: ese año falleció el francmasón Blas Agüero, quien se había negado a recibir los sacramentos, por lo que la iglesia le había negado la sepultura, pero a pedido de su sobrino el presidente Bartolomé Mitre le dio el permiso, a lo que el arzobispo protestó retirando al cementerio su condición de santo, que nunca recuperó.
+                                    <br>
+                                    Durante la década de 1870, como consecuencia de la epidemia de fiebre amarilla que asoló la ciudad, muchos porteños de clase alta abandonaron los barrios de San Telmo y Montserrat y se mudaron a la parte norte de la ciudad, a Recoleta. Al convertirse en barrio de clase alta, el cementerio se convirtió en el último reposo de las familias de mayor prestigio y poder de Buenos Aires. Al mismo tiempo se inauguraba el Cementerio de la Chacarita o Cementerio del Oeste, por oposición al Cementerio del Norte nombre menos común que recibe la Recoleta.
+                                    <br>
+                                    En el ingreso al cementerio hay tres fechas grabadas sobre el piso: 1822 (año de su creación), 1881 (fecha de su primera remodelación) y 2003 (segunda remodelación).
+                                    <br>
+                                    <h3>Curiosidades</h3>
+
+                                    El Cementerio de la Recoleta cuenta con más de 4500 bóvedas de estilos muy variados, entre las que se incluyen templos griegos y hasta pirámides egipcias. <br> A su vez, encierra muchas historias curiosas en sus mausoleos. Una de ellas es la de David Alleno, cuidador del cementerio, quien ahorró toda su vida para poder construir en él su propia tumba.
+
+                                 </p>
+                            </div>
+                        <li class="lugarItemBoton itemRecoleta1"><button class="buttonLugares" onclick="abrirMapa(),mirarAtractivoRecoleta1()"> Mostrar en mapa </button></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <ul class="seccionBarrio">
+                        <li class="itemRecoleta2"><img class="lugarFoto" src="https://i.imgur.com/hAVaon0.jpg" alt="fotoRecoletaFloralisGenérica"></img></li>
+                        <li class="lugarTitulo itemRecoleta2"><p> Floralis Genérica </p></li>
+                        <li class="itemRecoleta2"><hr class="lugarHr"></li>
+                        <li class="lugarItemParrafo itemRecoleta2"><p> La Floralis Genérica es una escultura metálica situada en la Plaza de las Naciones Unidas, Avenida Figueroa Alcorta, de la Ciudad Autónoma de Buenos Aires, obsequiada a dicha ciudad por el arquitecto argentino Eduardo Catalano.<br>
+
+                            Se encuentra situada en el centro de un parque de cuatro hectáreas de límites arbolados, rodeada de sendas que se acercan y alejan brindando diferentes perspectivas del monumento y situada por sobre un espejo de agua, que aparte de cumplir su función estética, la protege. <br>
+                            Representa una gran flor realizada en acero inoxidable, con esqueleto de aluminio y hormigón armado, que mira en dirección al cielo, extendiendo hacia él sus seis pétalos. <br>
+                            Pesa 18 toneladas y tiene 23 metros de alto. Años atrás estuvo previsto en ese sitio la construcción del Altar de la Patria.</p></li>
+                        <li class="lugarItemBoton itemRecoleta2"><button class="buttonLugares" onclick="mostrarDescripcionRecoleta2()"> Descripción completa </button></li>
+                            <div class="descripcionCompletaRecoleta2">
+                                 <button class="botonDescripcion" onclick="cerrarDescripcionRecoleta2()">X</button>
+                                 <h2> Floralis Genérica </h2>
+                                 <hr>
+                                 <p>
+                                    La estructura fue donada a la ciudad por el arquitecto argentino Eduardo Catalano (1917-2010) y fue inaugurada el 13 de abril de 2002 con materiales provistos por la empresa de aeronaves Lockheed Martin Aircraft Argentina. En ese día sus pétalos no se cerraron por inconvenientes técnicos que fueron solucionados dos meses después. <br>
+
+                                    Desde mediados de 2010 hasta mediados de 2015 no funcionó por falta de mantenimiento de parte del Gobierno de la Ciudad de Buenos Aires. Además se habían perdido los planos de la escultura y la sala de máquinas había sido intrusada. Fue reinaugurada el 10 de junio del año 2015, contemplándose el agregado de luces LED y sensores automáticos. El encargado de la reparación fue el Ingeniero Salvador Sorbello (trabajando para la Universidad Tecnológica Nacional). <br>
+                                    
+                                    <h3>Descripcion</h3>
+
+                                    Una de las características de la flor es un sistema eléctrico que abre y cierra automáticamente sus seis pétalos de acero inoxidable y aluminio (de 20 m de alto y de ancho) dependiendo de la hora del día. Durante la noche, la flor se cierra emanando de su interior un resplandor rojo para renacer abierta en la mañana del día siguiente. Este mismo mecanismo es el que cierra la flor al presentarse vientos fuertes, emulando el proceso de fotonastia de la naturaleza. <br>
+
+                                    Se abre todas las mañanas a las 8 y se cierra al ocaso, en un horario que cambia según la estación del año. <br>
+
+                                    Hay cuatro noches especiales en los que los pétalos quedan abiertos: 25 de mayo, 21 de septiembre, y 24 y 31 de diciembre. En las noches de luna llena también abre totalmente sus pétalos.
+                                    <br>
+                                    Según su autor el arquitecto Eduardo Catalano, Floralis significa que pertenece a la flora y por ende a las flores, y Genérica deriva del concepto “género” e indica que representa a todas las flores del mundo.
+                                    <br>
+                                    El espejo de agua del que sobresale tiene 44 m de diámetro y 0,15 de profundidad, y su agua desborda sobre un foso que lo rodea, que por canalización la envía a una sala de bombeo.
+
+                                    <h3>Dimensiones</h3>
+
+                                    > 23 m de altura <br>
+                                    >Diametro con pétalos cerrados: 16 m <br>
+                                    >Diametro con pétalos abiertos: 32 m <br>
+                                    >Espejo de agua: 44 m de diámetro <br>
+                                    >Peso: 18 toneladas.
+                                </p>
+                            </div>
+                    <li class="lugarItemBoton itemRecoleta2"><button class="buttonLugares" onclick="abrirMapa(),mirarAtractivoRecoleta2()"> Mostrar en mapa </button></li>
+
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="seccionBarrio">
+                        <li class="itemRecoleta3"><img class="lugarFoto" src="https://i.imgur.com/HVOjpHA.jpg" alt="fotoRecoletaAteneoGrandSplendid"></img></li>
+                        <li class="lugarTitulo itemRecoleta3"><p> Ateneo Grand Splendid </p></li>
+                        <li class="itemRecoleta3"><hr class="lugarHr"></li>
+                        <li class="lugarItemParrafo itemRecoleta3"><p>El Ateneo Grand Splendid es una librería ubicada en el barrio de Recoleta, Buenos Aires. Destaca por situarse donde lo hiciera el teatro Grand Splendid, habiendo conservado la arquitectura original de dicho teatro, pero estando a su vez readaptado para funcionar como librería.<br>
+                             En 2008, fue elegida por el periódico británico The Guardian como la segunda librería más hermosa del mundo, y en 2019, National Geographic la declaró como la más bella del mundo. </p></li>
+                        <li class="lugarItemBoton itemRecoleta3"><button class="buttonLugares" onclick="mostrarDescripcionRecoleta3()"> Descripción completa </button></li>
+                             <div class="descripcionCompletaRecoleta3">
+                                  <button class="botonDescripcion" onclick="cerrarDescripcionRecoleta3()">X</button>
+                                  <h2> Ateneo Grand Splendid </h2>
+                                  <hr>
+                                  <p>
+                                    El Ateneo Grand Splendid encabeza varios récords: es la librería más grande de Sudamérica, fue elegida por el diario británico The Guardian como la segunda mejor librería del mundo y la revista estadounidense National Geographic la destacó como la más linda. Por acá pasan por día cientos de personas que no dejan de maravillarse con el espectáculo que los rodea. Porque si bien se puede comprar música, películas y libros, entrar a este lugar es una experiencia por sí misma.
+                                    <br>
+                                    La librería fue inaugurada el 4 de diciembre de 2000 pero el edificio conserva el antiguo esplendor y elegancia del teatro Grand Splendid de principios de siglo XX: con sus barandas originales, la decoración intacta y una imponente cúpula con frescos, de 20 metros de diámetro. El motivo elegido para decorar el “cielo” del lugar es una representación de la paz, algo muy significativo ya que fue realizada por Nazareno Orlandi en 1919, justo el mismo año en el que había terminado la Primera Guerra Mundial.
+                                    <br>
+                                    En el antiguo escenario con el telón de terciopelo entreabierto funciona un bar que invita a sentarse libro en mano. También se pueden aprovechar los sillones que están a ambos lados de la sala principal o bien ubicarse en los exclusivos palcos que funcionan como pequeñas salas de lectura. En el subsuelo se despliega un sector dedicado a los libros infantiles, y el piso superior suele ser el elegido para muestras y exposiciones.
+                                    <br>
+                                    <h2>Curiosidades</h2>
+                                    El teatro Grand Spendid abrió sus puertas en 1919 y enseguida se convirtió en uno de los faros de la cultura de la Ciudad: en él se hicieron grandes conciertos, ballet, ópera y obras de teatro icónicas, como 40 Quilates. En este mismo lugar se exhibió por primera vez en el país una película sonora (The Divine Lady, en 1929). A su vez, fue donde funcionó el sello Nacional Odeón (hoy conocido como EMI), en el que, en 1920, empezó su carrera Carlos Gardel. La sala de grabación aún existe, aunque no se puede visitar. También alojó a la sede de Radio Splendid, que comenzó a transmitir el 23 de mayo de 1923 y que fue la primera emisora en la que cantó el mítico tanguero.
+                                    <br>
+                                    Aunque el teatro dejó de funcionar a fines de la década del 80, el cine siguió en pie hasta 1999. Después de estar cerrado unos meses, y tras una inversión de 3 millones de dólares, se reconvirtió en la librería que hoy conocemos.  
+                                  </p>
+                             </div>
+                        <li class="lugarItemBoton itemRecoleta3"><button class="buttonLugares" onclick="abrirMapa(),mirarAtractivoRecoleta3()"> Mostrar en mapa </button></li>
+            
+                    </ul>
+                </li>
+            </ul></li>
+        </ul>
+
+        <footer>
+            <ul>
+                <li class="itemFooter"><p> 103 - Emergencias </p></li>
+                <li class="itemFooter"><p> 107 - SAME </p></li>
+                <li class="itemFooter"><p> 911 - Policía </p></li>
+                <li class="itemFooter"><p> 147 - Atención ciudadana </p></li>
+            </ul>
+        </footer>
+
+        <script src="..\js\lugaresScript.js"></script>
+    </body>
+
+</html>

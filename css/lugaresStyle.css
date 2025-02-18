@@ -1,0 +1,251 @@
+body{
+    background-image: url("https://i.imgur.com/fEfgggB.jpg");
+}
+
+#combobox{
+    display: block;
+    list-style: none;
+    margin-right: 7%;
+    margin-left: 7%;
+    margin-top: 140px;
+    
+}
+
+#barraLugares{
+    list-style:none;
+    float:left;
+    margin: 0;
+    padding-left: 5px;
+    min-height: 580px;
+    min-width: 140px;
+    background-color: #5b5dad;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+
+#seccionLugares{
+    list-style:none;
+    background-color: #a19bf9;
+    min-height: 580px;
+    border-top-right-radius: 50px; border-bottom-right-radius: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    padding-left: 10px; padding-right: 10px;
+}
+
+.seccionBarrio{
+    list-style:none;
+    margin:0;
+}
+
+.dropdownPadrePuertoMadero, .dropdownPadreRecoleta{
+    position:relative;
+}
+
+.dropdownPuertoMadero, .dropdownRecoleta{
+    position:absolute;
+    display: none;
+    z-index: 1;
+    top: -20%;
+    left: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: #5b5dad;
+    border-left-style:solid;
+    border-left-width: 3px;
+    border-left-color: #a19bf9;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.dropdownLugar{
+    list-style: none;
+    margin: 0;
+    padding-left: 5px;
+    min-width: 150px;
+}
+
+.dropdownLugarItem{
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight: bolder;
+    cursor: default;
+}
+
+.dropdownPadrePuertoMadero:hover .dropdownPuertoMadero, .dropdownPadreRecoleta:hover .dropdownRecoleta{
+    display: block;
+}
+
+.dropdownLugarItem:hover{
+    color: #a19bf9;
+}
+
+.lugarItem{
+    margin:0;
+    padding:0;
+}
+
+.lugarItem p{
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight: bolder;
+}
+
+.lugarItem p:hover {
+    color: #a19bf9;
+    cursor: default;
+}
+
+.lugarItemSeccionStandby{
+    float:left;
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight: bolder;
+    margin-left: 120px;
+    font-size: 50px;
+    cursor: default;
+}
+
+.lugarTitulo{
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight: bolder;
+    padding-top:20px;
+    margin-left: 120px;
+    font-size: 50px;
+    cursor: default;
+}
+
+.lugarItemParrafo{
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight: bolder;
+    font-size: 18px;
+    margin-left: 120px;
+    margin-right: 420px;
+    cursor: default;
+}
+
+.lugarFoto{
+    max-width: 350px;
+    height: 530px;
+    margin: 0;
+    float: right;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    border-style: solid;
+    border-color: #5b5dad;
+    border-width: 5px;
+}
+
+.lugarItemBoton{
+    float: left;
+    margin-left: 200px;
+    margin-top: 20px;
+}
+
+.buttonLugares{
+    border-radius: 50px;
+    background-color: #a19bf9;
+    border-color: #ffe6f4;
+    border-width: 3px;
+    border-style: solid;
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight:bolder;
+    font-size: 15px;
+    padding: 10px;
+    cursor:pointer;
+}
+
+.buttonLugares:active {
+    background-color: #5b5dad;
+}
+
+.lugarHr{
+    margin-right: 420px;
+    border: 2px solid #ffe6f4;
+}
+
+.itemPuertoMadero, .itemPuertoMadero1, .itemPuertoMadero2, .itemRecoleta, .itemRecoleta1, .itemRecoleta2, .itemRecoleta3{
+    display:none;
+}
+
+.descripcionCompletaPuertoMadero1, .descripcionCompletaPuertoMadero2, .descripcionCompletaRecoleta1,.descripcionCompletaRecoleta2, .descripcionCompletaRecoleta3{
+    display: none;
+    position:absolute;
+    top: 17%;
+    left: 16%;
+    right: 12%;
+    bottom: 16%;
+    background-color: #5b5dad;
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight: bolder;
+    font-size: 18px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:#ffe6f4;
+    padding: 15px;
+    cursor: default;
+    overflow-y:scroll;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);
+    z-index: 2;
+}
+
+h2 {
+    text-align: center;
+}
+
+.botonDescripcion{
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor:pointer;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+::-webkit-scrollbar-track {
+    background: #a19bf9;
+}
+  
+::-webkit-scrollbar-thumb {
+    background:lightgray;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.mapaLugares{
+    display:none;
+    position:absolute;
+    top: 17%;
+    left: 16%;
+    right: 12%;
+    bottom: 16%;
+    background-color: #5b5dad;
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight: bolder;
+    font-size: 18px;
+    text-align: center;
+    border-style: solid;
+    border-width: 5px;
+    border-color:#ffe6f4;
+    padding: 15px;
+    cursor: default;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);
+    z-index: 2;
+}
+
+#map { 
+    margin: 2%;
+    margin-top: 3%;
+    min-width: 95%;
+    min-height: 75%;
+    border-radius: 50px;
+}

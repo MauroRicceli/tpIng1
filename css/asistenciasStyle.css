@@ -1,0 +1,52 @@
+body{
+    background-image: url("https://i.imgur.com/fEfgggB.jpg");
+}
+
+.asistencia{
+    background-color: #a19bf9;
+    min-width: 70%;
+    min-height: 650px;
+    border-radius: 50px;
+    border-color: #5b5dad;
+    margin: 5%;
+    list-style: none;
+    padding: 0;
+}
+
+.menuAsistencia{
+    float: left;
+    min-width: 50%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #5b5dad;
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight: bolder;
+    cursor:pointer;
+    margin-bottom: 50px;
+}
+
+.menuAsistencia:hover{
+    background-color: #696aaa;
+}
+
+.standByAsistencia{
+    text-align: center;
+    padding-top: 15%;
+    font-family: 'Roboto', sans-serif;
+    color: #ffe6f4;
+    font-weight: bolder;
+    font-size: larger;
+    cursor: default;
+}
+
+
+#mapCentros, #mapMoviles {
+    display: none;
+    margin-right: 5%; margin-left: 5%;
+    padding-bottom: 29%;
+    min-width: 70%;
+    min-height: 75%;
+    border-radius: 50px;
+}

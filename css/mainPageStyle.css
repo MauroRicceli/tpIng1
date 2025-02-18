@@ -1,0 +1,255 @@
+
+/* GAMA DE COLORES UTILIZADOS
+.color1 {color: #140f07;}
+.color2 {color: #252a51;}
+.color3 {color: #5b5dad;}
+.color4 {color: #a19bf9;}
+.color5 {color: #ffe6f4;}
+*/
+
+header{
+text-align: center;
+margin: 0;
+padding: 2px;
+display: block;
+background-color: #a19bf9;
+overflow: hidden;
+}
+
+header p{
+font-family:'Pixelify Sans', sans-serif;
+margin-top: 0;
+margin-bottom: 0;
+margin-left: 20%; margin-right: 20%;
+border-radius:100px;
+color: #ffe6f4;
+background-color: #5b5dad;
+padding: 2px;
+}
+
+.headerDemoNeon{
+display: none;
+color: #fff;
+text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+
+header i{
+float: right;
+color: #5b5dad;
+margin-right: 15px;
+margin-top: 10px;
+}
+
+.contactUs{
+font-size: small;
+float: right;
+margin: 0;
+background-color: unset;
+color: #5b5dad;
+font-family: 'Roboto', sans-serif;
+margin-right: 2px;
+margin-top: 2px;
+display: none;
+}
+
+.contactUs:hover{
+cursor: default;
+}
+
+.barraNavegacionConImagen{
+margin: 0;
+vertical-align: middle;
+height: 500px;
+background-image: url("https://i.imgur.com/LzBo495.jpg");
+overflow: hidden;
+}
+
+
+nav ul{
+list-style: none;
+text-align: center;
+margin:0;
+margin-left: 20%; margin-right: 20%;
+padding: 5px;
+border-radius: 50px;
+overflow: hidden;
+max-width: 100%;
+}
+
+nav ul li{
+float: left;
+margin: 10px;
+margin-top: 0;
+line-height: 10px;
+border-radius: 50px;
+background-color: #5b5dad;
+}
+
+nav ul li a{
+text-decoration: none;
+}
+
+nav ul li h3{
+display: block;
+font-family: 'Roboto', sans-serif;
+color:#ffe6f4;
+font-style: italic;
+margin: 15px;
+font-size: medium;
+text-decoration: none;
+}
+
+nav ul li:hover{
+background-color: #a19bf9;
+}
+
+.itemsNavDerecha{
+float:right;
+}
+
+.dropdownItem{
+display:none;
+}
+
+.textoBienvenida{
+display: block;
+font-family: 'Roboto', sans-serif;
+text-align: center;
+font-style: oblique;
+font-size: 4vw;
+margin-top: 7%;
+background-color: #5b5dad;
+color:#ffe6f4;
+border-radius: 2%;
+margin-right: 25%; margin-left: 25%;
+
+}
+
+.imagenesLugaresConFlechas{
+margin-top: 3%;
+margin-left: 30%; margin-right: 30%;
+position: relative;
+}
+
+.imagenesLugaresMainPage p{
+background-color: rgba(161, 155, 249, 0.4);
+font-family: 'Roboto', sans-serif;
+text-align: center;
+color:#140f07;
+font-size: medium;
+padding: 2px;
+margin: 0;
+display: block;
+border-bottom-right-radius: 50px; border-bottom-left-radius: 50px;
+-webkit-box-shadow: -1px 10px 21px -7px rgba(0,0,0,0.6);
+-moz-box-shadow: -1px 10px 21px -7px rgba(0,0,0,0.6);
+box-shadow: -1px 10px 21px -7px rgba(0,0,0,0.6);
+}
+
+.imagenesLugaresMainPage{
+display: none;
+}
+
+.imagenPrincipal{
+display:block;
+}
+
+.imagenesLugaresMainPage img{
+max-width: 100%;
+margin: auto;
+-webkit-box-shadow: 0px 0px 14px 1px rgba(0,0,0,0.46);
+-moz-box-shadow: 0px 0px 14px 1px rgba(0,0,0,0.46);
+box-shadow: 0px 0px 14px 1px rgba(0,0,0,0.46);
+
+}
+
+.iconoLugaresAvanzar, .iconoLugaresRetroceder{
+position: absolute;
+z-index: 1;
+top: 40%;
+color: white;
+background-color: rgba(161, 155, 249, 0.4);
+padding: 15px;
+padding-top: 15px; padding-bottom: 15px;
+}
+.iconoLugaresRetroceder{
+right: 0;
+}
+
+.iconoLugaresAvanzar:hover, .iconoLugaresRetroceder:hover{
+background-color: rgba(161, 155, 249, 1);
+}
+
+footer{
+margin:0;
+margin-top:5%;
+background-color: #5b5dad;
+color: white;
+max-height: fit-content;
+padding:0;
+border-top-right-radius: 15px;
+border-top-left-radius: 15px;
+border-top-style:solid; border-color:#a19bf9; border-width:5px;
+}
+
+footer ul{
+list-style: none;
+text-align: center;
+margin:0;
+padding: 0;
+overflow: auto;
+}
+
+.itemFooter{
+font-family: 'Roboto', sans-serif;
+float:left;
+color:#ffe6f4;
+font-style:italic;
+font-weight: bolder;
+font-size: small;
+margin-left:15%;
+}
+
+@media screen and (max-width:950px) {
+header i{
+    display:block;
+    float: none;
+    margin: 5px;
+    margin-bottom: 10px;
+    height: auto;
+}
+
+.contactUs{
+    float:unset;
+}
+
+nav ul{
+    margin-right: 30%; margin-left: 30%;
+}
+
+nav ul li, .dropdownLugaresExt{
+    float:unset;
+    padding: 2px;
+}
+
+nav ul li h3{
+    font-size: small;
+}
+
+.itemsNavDerecha{
+    float:unset;
+}
+
+.textoBienvenida{
+    font-size: 35px;
+}
+
+}

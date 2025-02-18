@@ -1,0 +1,109 @@
+body{
+    background-image: url("https://i.imgur.com/fEfgggB.jpg");
+}
+
+.panelInformacion{
+    position:relative;
+    margin-left:10px;
+    height: 350px;
+    width: 300px;
+}
+
+.seccion{
+    width: 300px;
+    display:grid;
+    grid-template-columns: auto auto;
+    grid-gap:10px;
+    margin-bottom: 100px;
+}
+
+
+.panelInformacion .panel {  
+    position:absolute;
+    height: 350px;
+    width: 300px;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.panelInformacion .front {
+    transform: perspective(600px) rotateY(0deg);
+    box-shadow: 0 5px 10px #000;
+}
+
+.panelInformacion .front img {
+    position: absolute;
+    height: 350px;
+    width: 300px;
+    object-fit: cover;
+}
+
+.panelInformacion .front h3 {
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    height: 45px;
+    line-height: 45px;
+    color: #ffe6f4;
+    background: rgba(0,0,0,.4);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: medium;
+}
+
+.panelInformacion .back {
+    transform: perspective(600px) rotateY(180deg);
+    background: #5b5dad;
+ 
+    color: #ffe6f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 5px 10px #000;
+}
+
+.panelInformacion .back .link {
+    border-top:solid 1px #ffe6f4;
+    height: 50px;
+    line-height: 50px;
+}
+.panelInformacion .back  .link a {
+    color: #ffe6f4;
+}
+
+.panelInformacion .back h2 {
+    font-size:20px;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.panelInformacion .back p {
+    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+    font-size:10px;
+}
+
+.panelInformacion:hover .front {
+    transform: perspective(600px) rotateY(180deg);
+}
+
+.panelInformacion:hover .back {
+    transform: perspective(600px) rotateY(360deg);
+}
+
+#map { 
+    min-height: 520px;
+    height: 100%;
+    width: 35%;
+    float:right;
+    margin-right: 10px;
+    border-radius: 3%;
+    position: sticky;
+    top: 10px;
+
+}
+
+    

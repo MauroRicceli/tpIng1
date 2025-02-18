@@ -1,0 +1,55 @@
+body{
+    background-image: url("https://i.imgur.com/fEfgggB.jpg");
+}
+
+#seccionBusqueda {
+    float: right;
+    background-color: white;
+    width:50%;
+    margin-right: 10px;
+}
+
+#seccionBusqueda #titulo, #precio {
+    font-family:'Roboto', sans-serif;
+    margin-left: 10px;
+    text-align: center;
+    margin-right: 10px;
+    height: 100%;
+    margin-top: 10px;
+}
+
+#seccionAvisos{
+    color: #a19bf9;
+    font-family:'Roboto', sans-serif;
+    width: 45%;
+    float:left;
+    margin-left:10px;
+    height: 100%;
+    background-color: white;
+}
+
+#seccionAvisos .ul .li{
+   margin-top: 5px;
+}
+
+#seccionImagen {
+    width:400px;
+    height: 120px;
+    border:2px;
+    background-color: white;
+}
+
+#inputDetalle{
+    width: 295px;
+}
+
+#imagen{
+    width: 50px;
+    height: 50px;
+    margin-left: 30%;
+    margin-top:20px;
+}
+
+#inputPrecio{
+    width: 295px;
+}

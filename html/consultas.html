@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Portal </title>
+        <meta name="Autores" content="Mauro Andrés Ricceli, Jazmin Ludmila Quinteros y Valentina Gomez">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Descripción" content="DEMO pagina web para TP Ingenieria de Software 2023 turno mañana"
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a0fbb2be6c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="..\css\barraNavGeneralStyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+        <link rel="stylesheet" href="..\css\mapaStyle.css"/>
+        <link rel="stylesheet" href="..\css\consultasStyle.css">
+        
+    </head>
+
+    <body style="margin: 0; background-color: #ffe6f4;">
+
+        <header onmouseleave="mostrarLogoMail()">
+            <i class="fa-solid fa-envelope fa-lg logoMail" onmouseenter="mostrarExtensionContacto()" style="margin-top: 11px;"></i>
+            <p class="contactUs" style="margin-right: 1%;"> mauroricceli@gmail.com </p>
+            <p class="contactUs separadorContactUs"> | </p>
+            <p class="contactUs"> +54 11 3096-4654 </p>
+            <p class="headerDemo" onmouseenter="mostrarNeon()"> DEMO </p>
+            <p class="headerDemoNeon" onmouseleave="ocultarNeon()"> DEMO </p>
+        </header>
+        <nav>
+            <ul class="navPrincipal">
+                <div class="dropdownPadreLugares" >
+                <li class="items active"><a href="..\html\lugares.html"><p> LUGARES</p></a></li>
+                    <div class="dropdownLugares">
+                        <ul class="navDropdown">
+                            <li class="dropdownItem dropdownItemPersonalExt"><p> REGISTRAR LUGAR </p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="dropdownPadreEventos">
+                <li class="items" style="margin-left: 5px;"><p> EVENTOS </p></li>
+                    <div class="dropdownEventos">
+                        <ul class="navDropdown">
+                            <li class="dropdownItem "><a href="../html/eventosObras.html"><p> OBRAS DE ARTISTAS LOCALES </p></a></li>
+                            <li class="dropdownItem "><a href="../html/eventosPeliculas.html"><p> PELICULAS CINE AMBULANTE </p></a></li>
+                            <li class="dropdownItem dropdownItemPersonalExt"><p> REGISTRAR EVENTO </p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdownPadreAvisos">
+                <li class="items" style="margin-left: 5px;"><p> AVISOS </p> </li>
+                    <div class="dropdownAvisos">
+                    <ul class="navDropdown">
+                        <li class="dropdownItem"><p>SERVICIOS</p></li>
+                        <li class="dropdownItem"><a href="../html/consultas.html"><p>ARTICULOS</p></a></li>
+                        <li class="dropdownItem dropdownItemComercianteExt"><a href="../html/ofrecerProducto.html"><p>PUBLICAR AVISO</p></a></li>
+                    </ul>
+                    </div>
+                </div>
+
+                <li class="items itemDerecha"><a href="../html/asistencias.html"><p> ASISTENCIA </p></a> </li>
+
+                <div class="dropdownPadreMiembros">
+                <li class="items itemDerecha"><p> MIEMBROS </p> </li>
+                    <div class="dropdownMiembros">
+                    <ul class="navDropdown">
+                        <div class="dropdownPadreComerciantes">
+                        <li class="dropdownItem dropdownComerciante" onmouseenter="cambiarBordeDropdown()" onmouseleave="reestablecerBordeDropdown()"><p> COMERCIANTES </p></li>
+                            <div class="dropdownComerciantes" onmouseover="cambiarBordeDropdown()">
+                            <ul class="navDropdown">
+                                <li class="dropdownItem dropdownItemNoOculto"><p> SOLICITAR CUENTA </p></li>
+                                <li class="dropdownItem dropdownItemNoOculto" onclick="sesionComercianteIniciada()"><p> INICIAR SESION </p></li>
+                                <li class="dropdownItem dropdownItemOculto" onclick="sesionComercianteCerrada()"><p> CERRAR SESION </p></li>
+                                <li class="dropdownItem dropdownItemOculto"><p> GESTIONAR CUENTA </p></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="dropdownPadrePersonal">
+                        <li class="dropdownItem dropdownItemPersonal" onmouseenter="cambiarBordeDropdown()" onmouseleave="reestablecerBordeDropdown()"><p> PERSONAL </p></li>
+                            <div class="dropdownPersonal" onmouseover="cambiarBordeDropdown()">
+                            <ul class="navDropdown">
+                                <li class="dropdownItem dropdownItemNoOculto" onclick="sesionPersonalIniciada()"><p> INICIAR SESION </p></li>
+                                <li class="dropdownItem dropdownItemOculto" onclick="sesionPersonalCerrada()"><p> CERRAR SESION </p></li>
+                            </ul>
+                            </div>
+                        </div>
+                    </ul>
+                    </div>
+                </div>
+
+            </ul>
+        </nav>
+      
+        <br>
+
+        <div id="map"></div>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" ></script>
+
+        <iframe id="cotizacion" width="140px" height="85px" src="https://www.dolarsi.com/cotizador/cotizadorDolarsiSmall.php" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
+        
+        <div  class="seccion">
+            <div class="panelInformacion">
+               
+                        <div class="panel front">
+                            <img src="https://http2.mlstatic.com/D_NQ_NP_886541-MLA51262789966_082022-O.webp" alt="Portada del evento">
+                          <h3>Juego De Gervasoni Doble</h3>
+                        </div>
+                        <div class="panel back">
+                            <h2>Juego De Gervasoni Doble , 2 Simples Y 1 Mesa Ratona</h2>
+                            <p>Descripción<br><br>Sillón gervasoni doble + 2 gervasoni simple + mesa ratona
+                                NO incluye almohadones<br><br></p>
+                            <br>
+                            <p style="font-size: 100%;">$69.800</p>
+                                  
+                            <div class="link">
+                                <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarComercios(0)"></i>
+                            </div>
+                        </div>
+                        
+            </div>
+            <div class="panelInformacion">
+               
+                <div class="panel front">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_636589-MLA53989421262_022023-O.webp" alt="Portada del evento">
+                  <h3>Samsung Galaxy A23</h3>
+                </div>
+                <div class="panel back">
+                    <h2>Samsung Galaxy A23 5G 5G 128 GB awesome blue 4 GB RAM</h2>
+                    <p>Fotografía profesional en tu bolsillo
+                        Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.
+                        <br><br>
+                        Mayor rendimiento
+                        Su memoria RAM de 4 GB permite que tu smartphone funcione de manera fluida y sin demoras al realizar distintas tareas, jugar o navegar.
+                    </p>
+                    <br>
+                    <p style="font-size: 100%;">$208.999</p>
+                         
+                    <div class="link">
+                        <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarComercios(1)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panelInformacion">
+               
+                <div class="panel front">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_725921-MLU72628342922_112023-O.webp" alt="Portada del evento">
+                  <h3>Notebook Noblex</h3>
+                </div>
+                <div class="panel back">
+                    <h2>Notebook Noblex N14x1000 14.1 Hd Intel Celeron 4gb/128gb</h2>
+                    <p>Esta notebook ofrece un rendimiento adecuado para tus tareas diarias
+                        Cuenta con pantalla HD, almacenamiento rápido, conectividad inalámbrica y una variedad de puertos para conectar dispositivos externos.
+                        Es una opción conveniente y portátil para el uso personal y profesional.</p>
+                    <br>
+                    <p style="font-size: 100%;">$217.999</p>
+                      
+                    <div class="link">
+                        <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarComercios(2)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="panelInformacion">
+               
+                <div class="panel front">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_958155-MLA48807741547_012022-O.webp" alt="Portada del evento">
+                  <h3>Ventilador De Pie Sansei </h3>
+                </div>
+                <div class="panel back">
+                      <h2>Ventilador De Pie Sansei Vps1621n Blanco Con 3 Palas De Plástico, 16 De Diámetro 220 V 50 W</h2>
+                      <p>¡Aire limpio y fresco en tus ambientes! El ventilador Sansei VPS1621N es un elemento útil para dar frescura en el hogar. Con su óptimo rendimiento, la sensación térmica disminuirá. Es un aparato práctico, fácil de armar e instalar.</p>
+                      <br>
+                      <p style="font-size: 100%;">$42.999</p>
+                       
+                    <div class="link">
+                        <i class="fa-solid fa-location-dot fa-beat-fade" style="color: #ffffff;" onclick="consultarComercios(3)"></i>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+
+
+
+        <footer class="footerEventos">
+            <ul>
+                <li class="itemFooter"><p> 103 - Emergencias </p></li>
+                <li class="itemFooter"><p> 107 - SAME </p></li>
+                <li class="itemFooter"><p> 911 - Policía </p></li>
+                <li class="itemFooter"><p> 147 - Atención ciudadana </p></li>
+            </ul>
+        </footer>
+
+        <script src="..\js\barraNavGeneralScript.js"></script>
+        <script src="..\js\mapaScript.js"></script> 
+    
+
+    </body>
+
+</html>
